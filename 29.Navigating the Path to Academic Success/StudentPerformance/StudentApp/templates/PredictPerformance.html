@@ -1,0 +1,218 @@
+{% load static %}
+<html>
+<head>
+<title>Navigating the Path to Academic Success</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+    var roll=document.forms["f1"]["rollno"].value;
+	var x=document.forms["f1"]["t17"].value;
+	var y=document.forms["f1"]["t18"].value;
+	var a=document.forms["f1"]["t19"].value;
+	var b=document.forms["f1"]["t20"].value;
+
+	if(roll == null || roll==""){
+		window.alert("Roll no must be enter");
+		document.f1.rollno.focus();
+		return false;
+	}
+	
+	if(x == null || x==""){
+		window.alert("number of absence must be enter");
+		document.f1.t17.focus();
+		return false;
+	}
+	if(y == null || y==""){
+		window.alert("Period1 score must be enter");
+		document.f1.t18.focus();
+		return false;
+	}
+	if(a == null || a==""){
+		window.alert("Period2 score must be enter");
+		document.f1.t19.focus();
+		return false;
+	}
+	if(b == null || b==""){
+		window.alert("Period3 score must be enter");
+		document.f1.t20.focus();
+		return false;
+	}
+	return true;
+}
+		
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow"><font size="4" color="black">Navigating the Path to Academic Success</font></center></font>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+		<li><a href="{% url 'LoadDataset' %}"><font size="" color="black">Load & Process Dataset</font></a></font></li>
+	  <li><a href="{% url 'TrainML' %}"><font size="" color="black">Train ML Model</font></a></font></li>
+	   <li><a href="{% url 'PredictPerformance' %}"><font size="" color="black">Predict Performance</font></a></font></li>
+	   <li><a href="{% url 'Graphs' %}"><font size="" color="black">Graph Analysis</font></a></font></li>	  
+	   <li><a href="{% url 'index' %}"><font size="" color="black">Logout</font></a></font></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'PredictPerformanceAction' %} OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Predict Performance Screen</b></h3>
+   
+	<font size="" color="blue"><center>{{ data|safe }}</center></font>
+						
+						<table align="center" width="80" >
+
+<tr><td><font size="" color="black">Roll&nbsp;No</b></td>&nbsp;&nbsp;<td><input type="text" name="rollno" size="25"/>
+			 </td><td></td><td></td></tr>
+
+			 <tr><td><font size="" color="black">Gender</b></td>&nbsp;&nbsp;<td><select name="t1">
+			 <option value="M">Male</option>
+			 <option value="F">Female</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Age</b></td><td><select name="t2">
+			 <option value="14">14</option>
+			 <option value="15">15</option>
+			 <option value="16">16</option>
+			 <option value="17">17</option>
+			 <option value="18">18</option>
+			 <option value="19">19</option>
+			 <option value="20">20</option>
+			</select>
+			 </td></tr>
+         
+		   <tr><td><font size="" color="black">Mother&nbsp;Job</b></td>&nbsp;&nbsp;<td><select name="t3">
+			 <option value="at_home">At Home</option>
+			 <option value="health">Health</option>
+			 <option value="other">Other</option>
+			 <option value="services">Services</option>
+			 <option value="teacher">Teacher</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Father&nbsp;Job</b></td>&nbsp;&nbsp;<td><select name="t4">
+			 <option value="at_home">At Home</option>
+			 <option value="health">Health</option>
+			 <option value="other">Other</option>
+			 <option value="services">Services</option>
+			 <option value="teacher">Teacher</option>
+			</select>
+			 </td></tr>
+
+			  <tr><td><font size="" color="black">Reason</b></td>&nbsp;&nbsp;<td><select name="t5">
+			 <option value="course">Course</option>
+			 <option value="home">Home</option>
+			 <option value="other">Other</option>
+			 <option value="reputation">Reputation</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Guardian</b></td>&nbsp;&nbsp;<td><select name="t6">
+			 <option value="father">Father</option>
+			 <option value="mother">Mother</option>
+			 <option value="other">Other</option>
+			</select>
+			 </td></tr>
+
+			  <tr><td><font size="" color="black">Study&nbsp;Time</b></td>&nbsp;&nbsp;<td><select name="t7">
+			 <option value="1">1</option>
+			 <option value="2">2</option>
+			 <option value="3">3</option>
+			 <option value="4">4</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Failures</b></td>&nbsp;&nbsp;<td><select name="t8">
+			 <option value="0">0</option>
+			 <option value="1">1</option>
+			 <option value="2">2</option>
+			 <option value="3">3</option>
+			</select>
+			 </td></tr>
+
+			 <tr><td><font size="" color="black">School&nbsp;Support</b></td>&nbsp;&nbsp;<td><select name="t9">
+			 <option value="no">No</option>
+			 <option value="yes">Yes</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Family&nbsp;Support</b></td>&nbsp;&nbsp;<td><select name="t10">
+			 <option value="no">No</option>
+			 <option value="yes">Yes</option>
+			</select>
+			 </td></tr>
+
+			 <tr><td><font size="" color="black">Paid&nbsp;Classes</b></td>&nbsp;&nbsp;<td><select name="t11">
+			 <option value="no">No</option>
+			 <option value="yes">Yes</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Activities</b></td>&nbsp;&nbsp;<td><select name="t12">
+			 <option value="no">No</option>
+			 <option value="yes">Yes</option>
+			</select>
+			 </td></tr>
+
+			 <tr><td><font size="" color="black">Internet</b></td>&nbsp;&nbsp;<td><select name="t13">
+			 <option value="no">No</option>
+			 <option value="yes">Yes</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Free&nbsp;Time</b></td>&nbsp;&nbsp;<td><select name="t14">
+			 <option value="1">1</option>
+			 <option value="2">2</option>
+			  <option value="3">3</option>
+			 <option value="4">4</option>
+			 <option value="5">5</option>
+			</select>
+			 </td></tr>
+
+			 <tr><td><font size="" color="black">Go&nbsp;Out</b></td>&nbsp;&nbsp;<td><select name="t15">
+			 <option value="1">1</option>
+			 <option value="2">2</option>
+			 <option value="3">3</option>
+			 <option value="4">4</option>
+			 <option value="5">5</option>
+			 </select>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Health</b></td>&nbsp;&nbsp;<td><select name="t16">
+			 <option value="1">1</option>
+			 <option value="2">2</option>
+			  <option value="3">3</option>
+			 <option value="4">4</option>
+			 <option value="5">5</option>
+			</select>
+			 </td></tr>
+
+			 <tr><td><font size="" color="black">Absence</b></td>&nbsp;&nbsp;<td><input type="text" name="t17" size="15"/>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Period1&nbsp;Score</b></td>&nbsp;&nbsp;<td><input type="text" name="t18" size="15"/>
+			 </td></tr>
+
+			  <tr><td><font size="" color="black">Period2&nbsp;Score</b></td>&nbsp;&nbsp;<td><input type="text" name="t19" size="15"/>
+			 </td><td></td><td></td>
+			 <td><font size="" color="black">Period3&nbsp;Score</b></td>&nbsp;&nbsp;<td><input type="text" name="t20" size="15"/>
+			 </td></tr>
+		
+		 
+			<tr><td></td><td><input type="submit" value="Submit">
+			</td>
+			</table>
+			<br/><br/><br/><br/>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>
