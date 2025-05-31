@@ -36,8 +36,11 @@ The system successfully classifies academic performance into categories and help
 # How to Run
 
 1.Clone the repository
+
 2.Run run.bat to start the Python server
+
 3.Open browser at http://127.0.0.1:8000/index.html
+
 4.Use features from the UI
 
 # Future Enhancements
